@@ -6,7 +6,7 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "liquidjs": "^9.34.0",
-    "puppeteer": "^21.0.0"
+    "liquidjs": "^10.21.0",
+    "puppeteer": "^24.8.1"
   }
 }
