@@ -16,6 +16,10 @@ async function generatePDF() {
   // Render the template with data
   const fullHtml = await engine.parseAndRender(template, data);
 
+  // Output HTML to a file for debugging
+  const htmlOutputPath = path.join(__dirname, 'dist', 'output.html');
+  fs.writeFileSync(htmlOutputPath, fullHtml);
+
   // Launch Puppeteer and generate PDF
   const browser = await puppeteer.launch();
   const page = await browser.newPage();

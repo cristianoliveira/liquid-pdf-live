@@ -8,6 +8,7 @@
   run:
     - npm run build
     - open dist/output.pdf
+    - open ~/Applications/Alacritty.app
   run_on_init: true
   change: 'template/**'
   ignore: '**/node_modules/**'
