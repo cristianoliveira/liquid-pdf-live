@@ -6,25 +6,15 @@ const path = require('path');
 async function generatePDF() {
   const engine = new Liquid();
   const templatePath = path.join(__dirname, 'template', 'index.liquid');
-  const cssPath = path.join(__dirname, 'template', 'style.css');
+  const dataPath = path.join(__dirname, 'template', 'index.json');
   const outputPath = path.join(__dirname, 'dist', 'output.pdf');
 
   // Read the template and CSS
   const template = fs.readFileSync(templatePath, 'utf8');
-  const css = fs.readFileSync(cssPath, 'utf8');
+  const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
 
   // Render the template with data
-  const html = await engine.parseAndRender(template, { title: 'Hello, World!' });
-
-  // Add CSS to the HTML
-  const fullHtml = `
-    <html>
-      <head>
-        <style>${css}</style>
-      </head>
-      <body>${html}</body>
-    </html>
-  `;
+  const fullHtml = await engine.parseAndRender(template, data);
 
   // Launch Puppeteer and generate PDF
   const browser = await puppeteer.launch();

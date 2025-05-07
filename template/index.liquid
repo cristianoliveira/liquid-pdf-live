@@ -1,2 +1,23 @@
-<h1>{{ title }}</h1>
-<p>This is a sample PDF generated using LiquidJS and Puppeteer.</p>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+      }
+      h1 {
+        color: #333;
+      }
+      p {
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>{{ title }}</h1>
+    <p>This is a sample PDF generated using LiquidJS and Puppeteer.</p>
+    <p>Current date and time: {{ currentDate }}</p>
+  </body>
+</html>
