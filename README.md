@@ -18,6 +18,16 @@ To install the project dependencies, run:
 npm install
 ```
 
+## Running the Server
+
+To start the server, use the following command:
+
+```bash
+npm run start
+```
+
+This will launch the server, and you can access it at `http://localhost:3000`.
+
 ## Usage
 
 To generate a PDF, use the following command:
