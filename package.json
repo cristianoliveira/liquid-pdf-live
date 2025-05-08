@@ -1,11 +1,11 @@
 {
   "name": "pdf-generator",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "main": "build/index.js",
   "scripts": {
     "build": "tsc",
     "dev": "ts-node src/server.ts",
-    "generate": "ts-node src/index.ts"
+    "generate": "ts-node src/cli.ts"
   },
   "dependencies": {
     "express": "^4.21.2",

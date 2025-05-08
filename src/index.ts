@@ -5,7 +5,7 @@ import path from 'path';
 
 const rootPath = path.resolve(__dirname, '..');
 
-async function generatePDF(): Promise<void> {
+export async function generatePDF(): Promise<void> {
   const engine = new Liquid();
   const templatePath = path.join(rootPath, 'template', 'index.liquid');
   const dataPath = path.join(rootPath, 'template', 'index.json');
@@ -27,9 +27,3 @@ async function generatePDF(): Promise<void> {
   await browser.close();
   console.log('PDF generated at', outputPath);
 }
-
-if (require.main === module) {
-  generatePDF().catch(console.error);
-}
-
-export { generatePDF };
