@@ -23,6 +23,9 @@
             export PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1
             # Set Puppeteer to use Chromium from Nixpkgs
             export PUPPETEER_EXECUTABLE_PATH=${pkgs.chromium.outPath}/bin/chromium
+
+            # If CHROME_BIN isn't set set it to the chromium binary
+            export CHROME_BIN=${pkgs.chromium.outPath}/bin/chromium
           '';
         };
     });

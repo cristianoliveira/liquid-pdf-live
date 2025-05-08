@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="preload" href="/_next/static/media/61474312a467c815-s.p.woff2" as="font" type="font/woff2" crossorigin="anonymous" data-next-font="size-adjust" />
+  <link rel="preload" href="font.woff2" as="font" type="font/woff2" crossorigin="anonymous" data-next-font="size-adjust" />
+
   <title>Private Pension Coverage Summary</title>
   <style>
     html {
@@ -71,6 +72,8 @@
     }
 
     .advisor-info {
+      display: flex;
+      margin-bottom: 4px;
       font-size: 14px;
     }
 
@@ -98,14 +101,17 @@
     </div>
 
     <div class="advisor-box">
-      <img class="avatar" src="{{ image }}" />
       <div class="advisor-info">
-        <strong>{{ expert_name }}</strong>
-        Expert for private pension
+        <img class="avatar" src="{{ image }}" />
+        <div class="advisor-details">
+          <strong>{{ expert_name }}</strong>
+          Expert for private pension
+        </div>
       </div>
       <div class="message">
         I picked 3 out of 51 providers that fit you
       </div>
+      aa
     </div>
   </div>
 </body>

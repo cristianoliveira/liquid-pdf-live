@@ -3,12 +3,18 @@
 #
 # List here the tasks and the commands for this workflow
 # then run `fzz` to start to work.
+- name: start
+  run: 
+    # - pkill -f 'liquid' || true
+    - npm run dev &
+    # - $CHROME_BIN dist/output.pdf &
+  run_on_init: true
 
 - name: build
   run:
     - npm run build
-    - open dist/output.pdf
-    - open ~/Applications/Alacritty.app
+    - "curl -s http://localhost:9222/json | jq -r '.[0].id' | xargs -I {} npx wscat -c ws://localhost:9222/devtools/page/{} -x '{ \"id\":1, \"method\": \"Page.reload\" }'"
+    # - open ~/Applications/Alacritty.app
   run_on_init: true
   change: 'template/**'
   ignore: '**/node_modules/**'

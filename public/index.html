@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTML vs PDF Comparator</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: sans-serif; height: 100vh; display: flex; flex-direction: column; }
+    header { padding: 0.3rem; background: #f4f4f4; text-align: center; font-weight: bold; }
+    .toolbar { padding: 0.5rem; background: #ddd; text-align: center; }
+    .container { flex: 1; display: flex; transition: all 0.3s ease; }
+    .panel {
+      flex: 1;
+      border: 1px solid #ccc;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    iframe {
+      flex: 1;
+      width: 100%;
+      border: none;
+    }
+    .maximize-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      border: 1px solid #aaa;
+      padding: 4px 8px;
+      cursor: pointer;
+      z-index: 1;
+    }
+    .maximized {
+      flex: 1 1 100%;
+      width: 100%;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>HTML and PDF Side-by-Side Comparison</header>
+  <div class="container">
+    <div class="panel" id="htmlPanel">
+      <button class="maximize-btn" onclick="maximize('html')">🔍 Maximize / Compare</button>
+      <iframe src="dist/output.html"></iframe>
+    </div>
+    <div class="panel" id="pdfPanel">
+      <button class="maximize-btn" onclick="maximize('pdf')">🔍 Maximize / Compare</button>
+      <iframe src="dist/output.pdf"></iframe>
+    </div>
+  </div>
+
+  <script>
+    function applyMaximizedState() {
+      const state = localStorage.getItem('maximizedPanel');
+      const htmlPanel = document.getElementById('htmlPanel');
+      const pdfPanel = document.getElementById('pdfPanel');
+
+      if (state === 'html') {
+        htmlPanel.classList.add('maximized');
+        pdfPanel.classList.add('hidden');
+      } else if (state === 'pdf') {
+        pdfPanel.classList.add('maximized');
+        htmlPanel.classList.add('hidden');
+      }
+    }
+
+    function maximize(target) {
+      const htmlPanel = document.getElementById('htmlPanel');
+      const pdfPanel = document.getElementById('pdfPanel');
+
+      if (target === 'html') {
+        const isMax = htmlPanel.classList.toggle('maximized');
+        pdfPanel.classList.toggle('hidden', isMax);
+        localStorage.setItem('maximizedPanel', isMax ? 'html' : 'none');
+      } else {
+        const isMax = pdfPanel.classList.toggle('maximized');
+        htmlPanel.classList.toggle('hidden', isMax);
+        localStorage.setItem('maximizedPanel', isMax ? 'pdf' : 'none');
+      }
+    }
+
+    applyMaximizedState();
+  </script>
+</body>
+</html>
