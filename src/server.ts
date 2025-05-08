@@ -17,7 +17,6 @@ fs.watch('./template', (event, file) => {
     return;
   }
   changeStack.add(file);
-  aa
   generatePDF()
     .then(() => {
       console.log('PDF generated successfully');
