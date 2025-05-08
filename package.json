@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "node index.js"
+    "build": "node index.js",
+    "start": "nodemon server.js"
   },
   "dependencies": {
+    "express": "^4.21.2",
     "liquidjs": "^10.21.0",
+    "nodemon": "^3.1.10",
     "puppeteer": "^24.8.1"
   }
 }
