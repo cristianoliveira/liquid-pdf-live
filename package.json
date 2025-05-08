@@ -1,15 +1,21 @@
 {
   "name": "pdf-generator",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "dev": "node server.js",
-    "generate": "node index.js"
+    "build": "tsc",
+    "dev": "ts-node src/server.ts",
+    "generate": "ts-node src/index.ts"
   },
   "dependencies": {
     "express": "^4.21.2",
     "liquidjs": "^10.21.0",
     "live-server": "^1.2.2",
     "puppeteer": "^24.8.1"
+  },
+  "devDependencies": {
+    "@types/live-server": "^1.2.3",
+    "ts-node": "^10.0.0",
+    "typescript": "^5.0.0"
   }
 }
