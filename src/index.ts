@@ -5,18 +5,22 @@ import path from 'path';
 
 const rootPath = path.resolve(__dirname, '..');
 
-export async function generatePDF(): Promise<void> {
+export async function generatePDF(file: string): Promise<void> {
   const engine = new Liquid();
-  const templatePath = path.join(rootPath, 'template', 'index.liquid');
-  const dataPath = path.join(rootPath, 'template', 'index.json');
-  const outputPath = path.join(rootPath, 'dist', 'output.pdf');
+  const fileName = path.basename(file, path.extname(file));
+  const templatePath = path.join(rootPath, 'template', file);
+  const dataPath = path.join(rootPath, 'template', `${fileName}.json`);
+  const outputPath = path.join(rootPath, 'dist', `${fileName}.pdf`);
 
   const template = fs.readFileSync(templatePath, 'utf8');
-  const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+  let data = {};
+  if (fs.existsSync(dataPath)) {
+    data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
+  }
 
   const fullHtml = await engine.parseAndRender(template, data);
 
-  const htmlOutputPath = path.join(rootPath, 'dist', 'output.html');
+  const htmlOutputPath = path.join(rootPath, 'dist', `${fileName}.html`);
   fs.writeFileSync(htmlOutputPath, fullHtml);
 
   const browser = await puppeteer.launch();

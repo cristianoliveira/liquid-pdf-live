@@ -47,11 +47,11 @@
   <div class="container">
     <div class="panel" id="htmlPanel">
       <button class="maximize-btn" onclick="maximize('html')">🔍 Maximize / Compare</button>
-      <iframe src="dist/output.html"></iframe>
+      <iframe id="html-preview" src="dist/output.html"></iframe>
     </div>
     <div class="panel" id="pdfPanel">
       <button class="maximize-btn" onclick="maximize('pdf')">🔍 Maximize / Compare</button>
-      <iframe src="dist/output.pdf"></iframe>
+      <iframe id="pdf-preview" src="dist/output.pdf"></iframe>
     </div>
   </div>
 
@@ -85,6 +85,20 @@
       }
     }
 
+    // Replace the src attr of html-preview and pdf-preview with the actual paths to your HTML and PDF files
+    // from file={name} from url 
+    function setSrc() {
+      const htmlPreview = document.getElementById('html-preview');
+      const pdfPreview = document.getElementById('pdf-preview');
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const fileName = urlParams.get('template') || 'output';
+
+      htmlPreview.src = `dist/${fileName}.html`;
+      pdfPreview.src = `dist/${fileName}.pdf`;
+    }
+
+    setSrc();
     applyMaximizedState();
   </script>
 </body>
