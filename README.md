@@ -48,7 +48,7 @@ npm run start
 
 ## Usage
 
-This will launch the server, and you can access it at `http://localhost:3000`.
+This will launch the server, and you can access it at `http://localhost:3000?template=foobar`.
 
 Once it is running, add the `templates/` like this `{foobar}.liquid` and `{foobar}.json` to start
 generating PDFs. It **watches** for changes and automatically generates and reload the browser
