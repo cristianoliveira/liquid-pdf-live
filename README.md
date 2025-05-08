@@ -46,11 +46,16 @@ To start the server, use the following command:
 npm run start
 ```
 
-This will launch the server, and you can access it at `http://localhost:3000`.
-
 ## Usage
 
-To generate a PDF, use the following command:
+This will launch the server, and you can access it at `http://localhost:3000`.
+
+Once it is running, add the `templates/` like this `{foobar}.liquid` and `{foobar}.json` to start
+generating PDFs. It **watches** for changes and automatically generates and reload the browser
+
+## CLI Usage
+
+To generate a PDF on demand, use the following command:
 
 ```bash
 npm run generate -- <path-to-template-file>
