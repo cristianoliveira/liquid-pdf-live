@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node server.js",
-    "build": "node index.js"
+    "generate": "node index.js"
   },
   "dependencies": {
     "express": "^4.21.2",

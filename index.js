@@ -30,4 +30,10 @@ async function generatePDF() {
   console.log('PDF generated at', outputPath);
 }
 
-generatePDF().catch(console.error);
+// In case you want to run this file directly
+// `node index.js`
+if (require.main === module) {
+  generatePDF().catch(console.error);
+}
+
+exports.generatePDF = generatePDF;

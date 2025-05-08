@@ -1,6 +1,31 @@
+const fs = require("node:fs");
+const { generatePDF } = require("./index.js");
+
 const liveServer = require("live-server");
 
 const port = process.env.PORT || 3033; // Default port
+
+const changeStack = new Set();
+fs.watch("./template", (event, file) => {
+	console.log("Event: ", file, event);
+	if (changeStack.has(file)) {
+		console.log("Already processing this file, skipping...");
+		return;
+	}
+	changeStack.add(file);
+	generatePDF()
+		.then(() => {
+			console.log("PDF generated successfully");
+		})
+		.catch((err) => {
+			console.error("Error generating PDF:", err);
+		}).finally(() => {
+			// Remove the file from the change stack after processing
+			setTimeout(() => {
+				changeStack.delete(file);
+			}, 500); // Adjust the timeout as needed
+		});
+})
 
 // if index.html jjjjjjjjj
 
