@@ -10,10 +10,10 @@
   "dependencies": {
     "express": "^4.21.2",
     "liquidjs": "^10.21.0",
-    "live-server": "^1.2.2",
     "puppeteer": "^24.8.1"
   },
   "devDependencies": {
+    "live-server": "^1.2.2",
     "@types/live-server": "^1.2.3",
     "ts-node": "^10.0.0",
     "ts-node-dev": "^2.0.0",

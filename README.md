@@ -1,16 +1,34 @@
-# Project Name
+# Liquid-PDF-live
 
 ## Introduction
 
-This project is designed to generate PDF documents using templates and data files. It utilizes the Liquid templating engine to process templates and generate the final PDF output.
+This project is designed to generate PDF files using Liquid templates in live mode.
+That means whenever the template file is modified, the server will automatically regenerate the PDF file and reload it in the browser.
 
 ## Features
 
-- Template-based PDF generation
-- Supports JSON data input
+- Live reloading of PDF files
+- Comparing HTML and PDF files side by side
+- Liquid Template-based PDF generation
 - Command-line interface for easy usage
 
-## Installation
+## Getting Started
+
+### Prerequisites
+
+ - Node.js (v22.x or later)
+ - npm (Node Package Manager)
+ - A chrome-based browser (for live reloading and PDF generation)
+
+### Clone the Repository
+
+To clone the repository, run the following command:
+
+```bash 
+git clone https://github.com/cristianoliveira/liquid-pdf-live.git
+```
+
+### Installing
 
 To install the project dependencies, run:
 
