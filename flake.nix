@@ -8,15 +8,18 @@
     utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs { inherit system; };
+        chromiumPackage = if pkgs.stdenv.isDarwin
+          then [ ]
+          else [ pkgs.chromium ];
       in {
         devShells.default = pkgs.mkShell {
-          packages = with pkgs; let
-            chromiumPackage = if builtins.match "x86_64-linux" system != null then [ chromium ] else [];
-          in [
+          packages = with pkgs; [
             nodejs
           ] ++ chromiumPackage;
 
-          shellHook = ''
+          shellHook =  if !pkgs.stdenv.isDarwin
+            then ''
+            echo "This is a Linux system"
             echo "Node.js version:"
             echo "$(${pkgs.nodejs}/bin/node -v)"
 
@@ -27,6 +30,12 @@
 
             # If CHROME_BIN isn't set set it to the chromium binary
             export CHROME_BIN=${pkgs.chromium.outPath}/bin/chromium
+          '' else ''
+            echo "This is a Darwin system, no chromium package available"
+            echo "Node.js version:"
+            echo "$(${pkgs.nodejs}/bin/node -v)"
+
+            echo "Make sure to set the PUPPETEER_EXECUTABLE_PATH to the path of the chromium binary"
           '';
         };
     });
