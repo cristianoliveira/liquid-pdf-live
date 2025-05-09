@@ -5,6 +5,10 @@
 This project is designed to generate PDF files using Liquid templates in live mode.
 That means whenever the template file is modified, the server will automatically regenerate the PDF file and reload it in the browser.
 
+### TL;DR;
+This app allows you to have the following workflow
+> Liquid Templates > HTML > PDF > Live Comparison (live reload)
+
 ![20250508_18h47m50s_grim](https://github.com/user-attachments/assets/ada16cc2-dabc-478c-b2c9-7576b8d63587)
 
 ## Features
