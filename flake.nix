@@ -10,10 +10,11 @@
         pkgs = import nixpkgs { inherit system; };
       in {
         devShells.default = pkgs.mkShell {
-          packages = with pkgs; [
+          packages = with pkgs; let
+            chromiumPackage = if builtins.match "x86_64-linux" system != null then [ chromium ] else [];
+          in [
             nodejs
-            chromium
-          ];
+          ] ++ chromiumPackage;
 
           shellHook = ''
             echo "Node.js version:"
