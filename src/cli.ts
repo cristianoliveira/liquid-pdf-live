@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { generatePDF } from './index';
+import { generatePDF } from './generate';
 
 const filePath = process.argv[2];
 
