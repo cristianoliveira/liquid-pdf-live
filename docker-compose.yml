@@ -1,0 +1,7 @@
+services:
+  wkhtmltopdf:
+    build: .
+    ports:
+      - "3033:3033"
+    volumes:
+      - ./template:/app/template
